@@ -56,8 +56,36 @@ $posts = [
     <title>Snack3</title>
 </head>
 <body>
-    <?php
+<ul>
+        <?php
+            // § mi sono salvato tutti i valori dell'array associativo di post in $postsValues
+            $postsValues = array_values($posts);
 
-    ?>
+            // § mi sono salvato tutte le chiavi dell'array associativo di post in $postsKeys
+            $postsKeys = array_keys($posts);
+
+            // # ciclo per ogni coppia chiave => valore nell'array associativo di post ($posts)
+            for ( $i = 0 ; $i < count($postsKeys) ; $i++){;?>
+
+                <!-- // # Scrivo la data relativa ai post in tale data -->
+                <h4>Post in data: <?php echo $postsKeys[$i]; ?></h4>
+
+                <!-- // ? ciclo per ogni valore presente tra i post di quella specifica data -->
+                <?php for ( $postIndex = 0 ; $postIndex < count($postsValues[$i]) ; $postIndex++){ ?>
+                    <h5>
+                        <?php echo $postsValues[$i][$postIndex]['title']; ?>
+                    </h5>
+                    <p>
+                        <em><?php echo $postsValues[$i][$postIndex]['author']; ?></em>
+                    </p>
+                    <p>
+                        <?php echo $postsValues[$i][$postIndex]['text']; ?>
+                    </p>
+
+                <?php } ?> <!-- //? chiusura secondo ciclo for -->
+
+            <?php } ?> <!-- // #chiusura primo ciclo for -->
+    </ul>
+
 </body>
 </html>
